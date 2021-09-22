@@ -1,0 +1,367 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"SaveCustRes": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"CustName": {
+						"type": "string"
+					},
+					"CustAddress": {
+						"type": "string"
+					},
+					"CustContactNo": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"CustName",
+					"CustAddress",
+					"CustContactNo",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SaveCustReq": {
+				"properties": {
+					"CustName": {
+						"type": "string"
+					},
+					"CustAddress": {
+						"type": "string"
+					},
+					"CustContactNo": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"CustName",
+					"CustAddress",
+					"CustContactNo"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OrderPizzaRes": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"PizzaId": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{}
+						]
+					},
+					"CustomerId": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{}
+						]
+					},
+					"PizzaQuantity": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"PizzaId",
+					"CustomerId",
+					"PizzaQuantity"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OrderReq": {
+				"properties": {
+					"PizzaId": {
+						"type": "string"
+					},
+					"CustomerId": {
+						"type": "string"
+					},
+					"PizzaQuantity": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"PizzaId",
+					"CustomerId",
+					"PizzaQuantity"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SaveResPizza": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"PizzaFlavour": {
+						"type": "string"
+					},
+					"PizzaPriceEuro": {
+						"type": "number",
+						"format": "double"
+					},
+					"PizzaPriceDollar": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"PizzaFlavour",
+					"PizzaPriceEuro",
+					"PizzaPriceDollar",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SavePizzaReq": {
+				"properties": {
+					"PizzaFlavour": {
+						"type": "string"
+					},
+					"PizzaPriceEuro": {
+						"type": "number",
+						"format": "double"
+					},
+					"PizzaPriceDollar": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"PizzaFlavour",
+					"PizzaPriceEuro",
+					"PizzaPriceDollar"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "pizza",
+		"version": "1.0.0",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/customer/saveCustomer": {
+			"post": {
+				"operationId": "SaveCustomer",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SaveCustRes"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"customer"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SaveCustReq"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/customer/getcustomerlist": {
+			"post": {
+				"operationId": "GetCustomerList",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/SaveCustRes"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"customer"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/order/saveorder": {
+			"post": {
+				"operationId": "Saveorder",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/OrderPizzaRes"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"order"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/OrderReq"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/order/getorderlist": {
+			"post": {
+				"operationId": "GetorderList",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/OrderPizzaRes"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"order"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/pizza/savepizza": {
+			"post": {
+				"operationId": "SavePizza",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SaveResPizza"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"pizza"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SavePizzaReq"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/pizza/getpizzalist": {
+			"post": {
+				"operationId": "GetPizzaList",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/SaveResPizza"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"pizza"
+				],
+				"security": [],
+				"parameters": []
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
