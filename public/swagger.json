@@ -82,6 +82,10 @@
 						"type": "number",
 						"format": "double"
 					},
+					"TotalBill": {
+						"type": "number",
+						"format": "double"
+					},
 					"createdAt": {
 						"type": "string"
 					},
@@ -93,7 +97,8 @@
 					"_id",
 					"PizzaId",
 					"CustomerId",
-					"PizzaQuantity"
+					"PizzaQuantity",
+					"TotalBill"
 				],
 				"type": "object",
 				"additionalProperties": false

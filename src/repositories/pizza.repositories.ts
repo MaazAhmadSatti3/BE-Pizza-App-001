@@ -11,4 +11,9 @@ export class MainPizza {
     getPizzaList() {
         return PizzaSchema.find()
     }
+
+    async getPizzaPrice(id: string): Promise<number> {
+        let pizzadoc = await PizzaSchema.findById(id)
+        return <number>pizzadoc?.PizzaPriceDollar
+    }
 }

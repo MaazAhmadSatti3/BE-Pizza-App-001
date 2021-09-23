@@ -1,8 +1,12 @@
 import express from 'express'
+import { nextTick } from 'process'
 import { OrderController } from '../controller/order.controller'
 import { OrderReq } from '../types/request/order.request'
 import { OrderPizzaRes } from '../types/response/order.response'
 import CustomError from '../utils/error'
+import { Response, Request, NextFunction } from 'express'
+import { Body } from '@tsoa/runtime'
+import { calcBill } from '../../middleware/calcBill'
 
 export class OrderRoutes {
     router: express.Router
@@ -13,12 +17,14 @@ export class OrderRoutes {
     }
 
     routes() {
-        this.router.post('/saveorder', async (req, res, next) => {
+        this.router.post('/saveorder', calcBill, async (req, res, next) => {
             try {
-                const order: OrderReq = req.body
-                const newOrder: OrderPizzaRes = await new OrderController().saveorder(order)
+                const order: any = req.body;
+                order['TotalBill']= res.locals.total_price;
+                const newOrder: OrderPizzaRes = await new OrderController().saveorder(order);
                 res.status(200).json({
-                    message: newOrder
+                    message: newOrder,
+                    Bill: res.locals.total_price
                 })
             } catch (error) {
                 next(error)
@@ -34,6 +40,8 @@ export class OrderRoutes {
                 next(error)
             }
         })
+
+        
     }
 }
 export const OrderRoutesApi = new OrderRoutes().router 

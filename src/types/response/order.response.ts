@@ -3,6 +3,7 @@ export interface OrderPizzaRes {
     PizzaId: string | any
     CustomerId: string | any
     PizzaQuantity: number
+    TotalBill: number
     createdAt?: string
     updatedAt?: string
 }

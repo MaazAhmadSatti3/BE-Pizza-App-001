@@ -8,7 +8,7 @@ export class MainCustomer {
         return new CustomerSchema(Customer).save()
     }
 
-    getCustomerList() {
-        return CustomerSchema.find()
+     getCustomerList() {
+    return CustomerSchema.find()
     }
 }
