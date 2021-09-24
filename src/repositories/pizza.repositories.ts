@@ -12,8 +12,13 @@ export class MainPizza {
         return PizzaSchema.find()
     }
 
-    async getPizzaPrice(id: string): Promise<number> {
+    async getPizzaPriceDollar(id: string): Promise<number> {
         let pizzadoc = await PizzaSchema.findById(id)
         return <number>pizzadoc?.PizzaPriceDollar
+    }
+
+    async getPizzaPriceEuro(id: string): Promise<number> {
+        let pizzadoc = await PizzaSchema.findById(id)
+        return <number>pizzadoc?.PizzaPriceEuro
     }
 }

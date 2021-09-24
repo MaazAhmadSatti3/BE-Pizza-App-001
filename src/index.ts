@@ -8,11 +8,11 @@ import { DbMongo } from "./config/mongodb.conn";
 import { Server } from "http";
 const health = require('@cloudnative/health-connect');
 let healthcheck = new health.HealthChecker();
-//import { MongoCluster,MongoDbName,Mongo_Pass,Mongo_user_name } from "./utills/constants";
+import { MongoCluster,MongoDbName,Mongo_Pass,Mongo_user_name } from "./utils/constant";
 let server: Server | null = null;
 const PORT = process.env.PORT || 5000;
 function initApplication(): express.Application {
-    new DbMongo().connect("localhost", "PizzaApp");
+    new DbMongo().connect(MongoCluster, MongoDbName, Mongo_user_name, Mongo_Pass);
     const app = express();
     app.use(express.json());
     app.use(morgan("tiny"));

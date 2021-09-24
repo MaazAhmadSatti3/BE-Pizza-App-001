@@ -5,7 +5,8 @@ export interface IOrder extends Document {
     PizzaId: string | any
     CustomerId: string | any
     PizzaQuantity: number
-    TotalBill: number
+    TotalBillDollar: number
+    TotalBillEuro: number
     createdAt?: string
     updatedAt?: string
 }

@@ -82,7 +82,11 @@
 						"type": "number",
 						"format": "double"
 					},
-					"TotalBill": {
+					"TotalBillDollar": {
+						"type": "number",
+						"format": "double"
+					},
+					"TotalBillEuro": {
 						"type": "number",
 						"format": "double"
 					},
@@ -98,7 +102,8 @@
 					"PizzaId",
 					"CustomerId",
 					"PizzaQuantity",
-					"TotalBill"
+					"TotalBillDollar",
+					"TotalBillEuro"
 				],
 				"type": "object",
 				"additionalProperties": false

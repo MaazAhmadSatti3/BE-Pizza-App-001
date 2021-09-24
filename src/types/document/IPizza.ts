@@ -6,5 +6,5 @@ export interface IPizza extends Document {
     PizzaPriceEuro: number
     PizzaPriceDollar: number
     createdAt?: string
-    updatedAt: string
+    updatedAt?: string
 }
