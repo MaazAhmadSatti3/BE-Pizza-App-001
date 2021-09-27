@@ -6,7 +6,9 @@ import { OrderPizzaRes } from '../types/response/order.response'
 import CustomError from '../utils/error'
 import { Response, Request, NextFunction } from 'express'
 import { Body } from '@tsoa/runtime'
-import { calcBillDollar, calcBillEuro } from '../../middleware/calcBill'
+import { calcBillDollar, calcBillEuro } from '../middleware/calcBill'
+import { tokenVerify } from '../middleware/authUser'
+import { LoginController } from '../controller/login.controller'
 
 export class OrderRoutes {
     router: express.Router
@@ -32,7 +34,7 @@ export class OrderRoutes {
                 next(error)
             }
         });
-        this.router.post('/getorderlist', async (req, res, next) => {
+        this.router.post('/getorderlist', tokenVerify, async (req, res, next) => {
             try {
                 const orderList: OrderPizzaRes[] = await new OrderController().getorderList()
                 res.status(200).json({

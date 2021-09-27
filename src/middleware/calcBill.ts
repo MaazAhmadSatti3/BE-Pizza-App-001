@@ -1,6 +1,6 @@
 //import { Body, Request } from '@tsoa/runtime'
 import  {Request, Response, NextFunction} from 'express'
-import { MainPizza } from '../src/repositories/pizza.repositories'
+import { MainPizza } from '../repositories/pizza.repositories'
 
 const deliveryCostDollar = 10;
 const deliveryCostEuro = 7;

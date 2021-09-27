@@ -12,4 +12,8 @@ export class MainOrder {
         return OrderSchema.find()
     }
 
+    getOrderId(_id: string) {
+        return OrderSchema.findById(_id)
+    }
+
 }
